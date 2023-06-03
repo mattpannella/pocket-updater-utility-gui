@@ -8,41 +8,10 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="pocket_updater_gui">
-    <Window.Styles>
-        <Style Selector="Button.leftNav">
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-        </Style>
-    </Window.Styles>
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
     
-    <Grid ColumnDefinitions="Auto,*">
-            <StackPanel IsEnabled="{Binding Loaded}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
-                <StackPanel.Background>
-                    <ImageBrush
-                        AlignmentX="Left"
-                        AlignmentY="Top"
-                        Source="/Assets/corn2.png"
-                        Stretch="None"
-                        Opacity=".1"
-                        TileMode="Tile" />
-                </StackPanel.Background>
-                <Button Classes="leftNav" Command="{Binding StartUpdateClick}">Update All</Button>
-                <Button Classes="leftNav">Update Firmware</Button>
-                <Button Classes="leftNav">Install Assets</Button>
-                <Button Classes="leftNav">Cores</Button>
-                <Button Classes="leftNav">Build JSONs</Button>
-                <Button Classes="leftNav">Image Packs</Button>
-                <Button Classes="leftNav" Margin="0,15">Settings</Button>
-            </StackPanel>
-            <Grid Grid.Column="1" RowDefinitions="*,15">
-                <ListBox Grid.Row="0" Background="Black"  x:Name="OutputBox" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Items="{Binding Console, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Foreground="Azure" Text="{Binding}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                </ListBox>
-                <ProgressBar Foreground="Gold" Background="Black" Grid.Row="1" Height="15" x:Name="downloadProgress" Minimum="0" Maximum="1" Value="{Binding Progress}"></ProgressBar>
-            </Grid>
-        </Grid>
+    <TransitioningContentControl Content="{Binding CurrentPage}" />
 </Window>
 
