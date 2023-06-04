@@ -40,12 +40,13 @@ public partial class CoresViewModel : ObservableObject
             Core core = Globals.Instance.Updater.GetCores().Find(x => x.identifier == c.identifier);
             core.UpdatePlatform(c.platform, c.category);
         }
-
+        
         Globals.Instance.SettingsManager.SaveSettings();
+        Globals.Instance.Updater.Initialize();
         var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
             .GetMessageBoxStandardWindow("You Did It!", "Core choices and platform names saved.");
     }
-
+    
     private async Task LoadCores()
     {
         await Globals.Instance.Updater.Initialize();
