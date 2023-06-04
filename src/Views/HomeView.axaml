@@ -16,7 +16,7 @@
                     <ImageBrush
                         AlignmentX="Left"
                         AlignmentY="Top"
-                        Source="/Assets/corn2.png"
+                        Source="/src/Assets/corn2.png"
                         Stretch="None"
                         Opacity=".1"
                         TileMode="Tile" />
@@ -81,7 +81,7 @@
                             <ImageBrush
                                 AlignmentX="Center"
                                 AlignmentY="Center"
-                                Source="/Assets/pocket.png"
+                                Source="/src/Assets/pocket.png"
                                 Stretch="None"
                                 Opacity=".05"
                                 TileMode="Tile" />

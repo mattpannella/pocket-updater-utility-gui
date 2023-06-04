@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="src\Assets\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\HomeView.axaml.cs">
+    <Compile Update="src\Views\HomeView.axaml.cs">
       <DependentUpon>HomeView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

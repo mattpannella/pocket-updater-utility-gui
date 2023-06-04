@@ -6,7 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
         x:Class="pannella.analoguepocket.gui.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/src/Assets/avalonia-logo.ico"
         
         Title="Update your shit">
     <Design.DataContext>

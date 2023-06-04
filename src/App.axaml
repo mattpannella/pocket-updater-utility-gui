@@ -11,7 +11,7 @@
         <SolidColorBrush x:Key="MediumGrey">#333333</SolidColorBrush>
     </Application.Resources>
     <Application.Styles>
-        <StyleInclude Source="/CoreManagerRow.axaml"></StyleInclude>
+        <StyleInclude Source="/src/CoreManagerRow.axaml"></StyleInclude>
         <FluentTheme Mode="Dark"/>
         <Style Selector="Button.leftNav">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
