@@ -1,6 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:pannella.analoguepocket.gui">
+        xmlns:controls="using:pannella.analoguepocket.gui"
+        xmlns:avalonia="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia">
     <Design.PreviewWith>
         <controls:CoreManagerRow />
     </Design.PreviewWith>
@@ -14,7 +15,8 @@
                     <TextBox Grid.Column="1" Text="{TemplateBinding platform, Mode=TwoWay}" Margin="0,0,10,0"/>
                     <TextBox Grid.Column="2" Text="{TemplateBinding category, Mode=TwoWay}" Margin="0,0,10,0"/>
                     <TextBlock VerticalAlignment="Center" Grid.Column="3" Text="{TemplateBinding CoreName}"/>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="4" Text="{TemplateBinding version}" />
+                    <TextBlock x:Name="installedVersion" VerticalAlignment="Center" Grid.Column="4" Text="{TemplateBinding version}" />
+                    <avalonia:Icon Grid.Column="4" IsVisible="{TemplateBinding version, Converter={x:Static StringConverters.IsNullOrEmpty}}" Classes="menuicon" Value="fa-solid fa-circle-xmark" />
                 </Grid>
             </ControlTemplate>
         </Setter>
