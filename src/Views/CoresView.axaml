@@ -33,7 +33,7 @@
         </StackPanel>
         <Label Grid.Column="1" IsVisible="{Binding Loading}">Loading...</Label>
         <Border Grid.Column="1" Padding="15">
-            <ScrollViewer>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="coresListBox" Items="{Binding Cores, Mode=TwoWay}">
                     <ItemsControl.Background>
                         <ImageBrush
@@ -50,7 +50,8 @@
                                 <local:CoreManagerRow CoreName="{Binding Path=Identifier}" 
                                                       Selected="{Binding Path=Track, Mode=TwoWay}"
                                                       platform="{Binding Path=Platform, Mode=TwoWay}"
-                                                      category="{Binding Path=Category, Mode=TwoWay}"/>
+                                                      category="{Binding Path=Category, Mode=TwoWay}"
+                                                      version = "{Binding Path=Config.core.metadata.version} "/>
                                 <Rectangle Fill="White" Height="1" Margin="0,20"/>
                             </StackPanel>
                         </DataTemplate>

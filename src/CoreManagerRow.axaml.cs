@@ -41,4 +41,13 @@ public class CoreManagerRow : TemplatedControl
         get => GetValue(categoryProperty);
         set => SetValue(categoryProperty, value);
     }
+
+    public static readonly StyledProperty<string> versionProperty = AvaloniaProperty.Register<CoreManagerRow, string>(
+        "version");
+
+    public string version
+    {
+        get => GetValue(versionProperty);
+        set => SetValue(versionProperty, value);
+    }
 }

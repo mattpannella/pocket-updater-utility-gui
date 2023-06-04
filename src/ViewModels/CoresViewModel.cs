@@ -42,6 +42,8 @@ public partial class CoresViewModel : ObservableObject
         }
 
         Globals.Instance.SettingsManager.SaveSettings();
+        var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+            .GetMessageBoxStandardWindow("You Did It!", "Core choices and platform names saved.");
     }
 
     private async Task LoadCores()
@@ -57,12 +59,13 @@ public partial class CoresViewModel : ObservableObject
         {
             Platform p = c.ReadPlatformFile();
             var core = new SimpleCore()
-                {
-                    Identifier = c.identifier,
-                    Track = !Globals.Instance.SettingsManager.GetCoreSettings(c.identifier).skip,
-                    Platform = p.name,
-                    Category = p.category
-                };
+            {
+                Identifier = c.identifier,
+                Track = !Globals.Instance.SettingsManager.GetCoreSettings(c.identifier).skip,
+                Platform = p.name,
+                Category = p.category,
+                Config = c.getConfig()
+            };
             Cores.Add(core);
         }
 

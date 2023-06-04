@@ -76,6 +76,10 @@ public partial class SettingsViewModel : ObservableObject
         Globals.Instance.SettingsManager.SaveSettings();
 
         RefreshUpdaterSettings();
+        
+        var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+            .GetMessageBoxStandardWindow("Congrats", "Settings Saved.");
+        messageBoxStandardWindow.Show();
         Loaded = true;
     }
 

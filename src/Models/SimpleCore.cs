@@ -10,6 +10,12 @@ public partial class SimpleCore : ObservableObject
     [ObservableProperty]
     public bool track;
 
-    [ObservableProperty] public string? platform;
-    [ObservableProperty] public string category;
+    [ObservableProperty]
+    public string? platform;
+    
+    [ObservableProperty]
+    public string category;
+
+    [ObservableProperty]
+    public Analogue.Config? config;
 }
