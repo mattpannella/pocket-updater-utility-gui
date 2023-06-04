@@ -9,7 +9,7 @@ jobs:
     name: Release
     strategy:
       matrix:
-        kind: ['macOS', 'windows', 'linux']
+        kind: ['macOS', 'windows']
         include:
           - kind: macOS
             os: macos-latest
