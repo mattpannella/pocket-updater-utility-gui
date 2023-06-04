@@ -1,14 +1,27 @@
 ﻿<Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
              xmlns:local="using:pannella.analoguepocket.gui"
              x:Class="pannella.analoguepocket.gui.App">
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
+    <Application.Resources>
+        <SolidColorBrush x:Key="DarkGreyBG">#1f1f1f</SolidColorBrush>
+        <SolidColorBrush x:Key="MediumGrey">#333333</SolidColorBrush>
+    </Application.Resources>
     <Application.Styles>
-        <FluentTheme Mode="Light"/>
+        <FluentTheme Mode="Dark"/>
         <Style Selector="Button.leftNav">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Padding" Value="5,15"/>
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        <Style Selector="i|Icon.menuicon">
+            <Setter Property="Margin" Value="0,0,5,0"/>
+        </Style>
+        <Style Selector="Window">
+            <Setter Property="Background" Value="{DynamicResource DarkGreyBG}"/>
         </Style>
     </Application.Styles>
 </Application>

@@ -17,6 +17,9 @@ public partial class HomeViewModel : ObservableObject
     
     [ObservableProperty]
     private double progress = 0;
+    
+    [ObservableProperty]
+    private int selectedItem = 0;
 
     //public HomeViewModel(HomeView window)
     public HomeViewModel()
@@ -42,6 +45,45 @@ public partial class HomeViewModel : ObservableObject
     {
         RunUpdates();
     }
+    
+    private void StartAssetInstaller()
+    {
+        DownloadAssets();
+    }
+    
+    private void StartJSONBuilder()
+    {
+        JSONBuilder();
+    }
+    
+    private void StartFirmwareUpdate()
+    {
+        DownloadFirmware();
+    }
+    
+    private async Task DownloadAssets()
+    {
+        Loaded = false;
+        Console = new ObservableCollection<string>();
+        await Globals.Instance.Updater.RunAssetDownloader();
+        Loaded = true;
+    }
+    
+    private async Task JSONBuilder()
+    {
+        Loaded = false;
+        Console = new ObservableCollection<string>();
+        await Globals.Instance.Updater.BuildInstanceJSON(true);
+        Loaded = true;
+    }
+    
+    private async Task DownloadFirmware()
+    {
+        Loaded = false;
+        Console = new ObservableCollection<string>();
+        await Globals.Instance.Updater.UpdateFirmware();
+        Loaded = true;
+    }
 
     private async Task RunUpdates()
     {
@@ -54,6 +96,7 @@ public partial class HomeViewModel : ObservableObject
     private void WriteLine(string text)
     {
         Console.Add(text);
+        SelectedItem = Console.Count() - 1;
         //Dispatcher.UIThread.InvokeAsync(_window.ScrollTextToEnd);
     }
 

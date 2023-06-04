@@ -21,9 +21,14 @@ public partial class HomeView : UserControl
       //  messageLogScrollViewer.ScrollIntoView(messageLogScrollViewer.ItemCount - 1);
     }
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    private void SettingsClick(object? sender, RoutedEventArgs e)
     {
         MainWindowViewModel context = this.Parent.DataContext as MainWindowViewModel;
         context.GoToSettings();
+    }
+
+    private void ExitClick(object? sender, RoutedEventArgs e)
+    {
+        Environment.Exit(0);
     }
 }

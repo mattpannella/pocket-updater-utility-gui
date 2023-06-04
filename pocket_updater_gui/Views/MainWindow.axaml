@@ -7,11 +7,22 @@
         x:Class="pannella.analoguepocket.gui.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="pocket_updater_gui">
+        
+        Title="Update your shit">
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
     
-    <TransitioningContentControl Content="{Binding CurrentPage}" />
+    <Grid RowDefinitions="40,*">
+        <TextBlock Grid.Row="0" 
+                   Background="Gold" 
+                   TextAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Padding="0,13"
+                   Foreground="black"
+                   FontWeight="ExtraBold"
+                   Text="{Binding HeaderText}"/>
+            <TransitioningContentControl Grid.Row="1" Content="{Binding CurrentPage}" />
+    </Grid>
 </Window>
 

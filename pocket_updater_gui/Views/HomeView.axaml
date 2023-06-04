@@ -1,11 +1,16 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:pannella.analoguepocket.gui.ViewModels"
+        xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
         x:Class="pannella.analoguepocket.gui.Views.HomeView">
-    <Grid ColumnDefinitions="150,*">
+    <UserControl.Styles>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource MediumGrey}" />
+        </Style>
+    </UserControl.Styles>
+    <Grid ColumnDefinitions="160,*">
             <StackPanel IsEnabled="{Binding Loaded}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
                 <StackPanel.Background>
                     <ImageBrush
@@ -16,24 +21,79 @@
                         Opacity=".1"
                         TileMode="Tile" />
                 </StackPanel.Background>
-                <Button Classes="leftNav" Command="{Binding StartUpdateClick}">Update All</Button>
-                <Button Classes="leftNav">Update Firmware</Button>
-                <Button Classes="leftNav">Install Assets</Button>
-                <Button Classes="leftNav">Cores</Button>
-                <Button Classes="leftNav">Build JSONs</Button>
-                <Button Classes="leftNav">Image Packs</Button>
-                <Button Classes="leftNav" Margin="0,15" Click="Button_OnClick">Settings</Button>
+                <Button Classes="leftNav" Command="{Binding StartUpdateClick}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-arrows-rotate" />
+                        <Label>Update All</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav" Command="{Binding StartFirmwareUpdate}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-download" />
+                        <Label>Update Firmware</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav" Command="{Binding StartAssetInstaller}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-file-arrow-down" />
+                        <Label>Install Assets</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav" Command="{Binding StartJSONBuilder}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-file-lines" />
+                        <Label>Build JSONs</Label>
+                    </StackPanel>
+                </Button>
+                <Button Margin="0,15,0,0" Classes="leftNav">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-list-check" />
+                        <Label>Manage Cores</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-images" />
+                        <Label>Image Packs</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav" Click="SettingsClick">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-sliders" />
+                        <Label>Settings</Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="leftNav" Click="ExitClick">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-door-open" />
+                        <Label>Exit</Label>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <Grid Grid.Column="1" RowDefinitions="*,15">
-                <ListBox Grid.Row="0" Background="Black"  x:Name="OutputBox" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Items="{Binding Console, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Border Padding="15" Grid.Column="1">
+                <Grid RowDefinitions="*,15">
+                    <ListBox Grid.Row="0" x:Name="OutputBox" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}"
+                             Items="{Binding Console, Mode=OneWay}" 
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"
+                             SelectedIndex="{Binding SelectedItem}">
+                        <ListBox.Background>
+                            <ImageBrush
+                                AlignmentX="Center"
+                                AlignmentY="Center"
+                                Source="/Assets/pocket.png"
+                                Stretch="None"
+                                Opacity=".05"
+                                TileMode="Tile" />
+                        </ListBox.Background>    
                         <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Foreground="Azure" Text="{Binding}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                </ListBox>
-                <ProgressBar Foreground="Gold" Background="Black" Grid.Row="1" Height="15" x:Name="downloadProgress" Minimum="0" Maximum="1" Value="{Binding Progress}"></ProgressBar>
-            </Grid>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Azure" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ProgressBar Foreground="Gold" Background="{DynamicResource DarkGreyBG}" Grid.Row="1" Height="15" x:Name="downloadProgress" Minimum="0" Maximum="1" Value="{Binding Progress}"></ProgressBar>
+                </Grid>
+            </Border>
         </Grid>
 </UserControl>
 
