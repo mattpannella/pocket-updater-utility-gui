@@ -1,0 +1,74 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Release
+    strategy:
+      matrix:
+        kind: ['macOS', 'windows', 'linux']
+        include:
+          - kind: macOS
+            os: macos-latest
+            target: osx
+            arm: true
+          - kind: windows
+            os: windows-latest
+            target: win
+            arm: false
+          - kind: linux
+            os: ubuntu-latest
+            target: linux
+            arm: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.400
+
+      - name: Build
+        shell: bash
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          release_name="App-$tag-${{ matrix.target }}"
+
+          # Build everything
+          dotnet publish pocket_updater_gui.csproj -r ${{ matrix.target }}-x64 --self-contained true -c Release -o "$release_name" --consoleloggerparameters:ErrorsOnly
+          if ${{ matrix.arm }}; then
+            mv ${release_name}/pocket_updater_gui ${release_name}/pocket_updater_gui_x64
+            dotnet publish pocket_updater_gui.csproj -r ${{ matrix.target }}-arm64 --self-contained true -c Release -o "$release_name" --consoleloggerparameters:ErrorsOnly
+            mv ${release_name}/pocket_updater_gui ${release_name}/pocket_updater_gui_arm64
+          fi
+
+          # Pack files
+          if [ "${{ matrix.target }}" == "win" ]; then
+            # Pack to zip for Windows
+            7z a -tzip "pocket_updater_gui_win.zip" "./${release_name}/pocket_updater_gui.exe"
+          elif [ "${{ matrix.target }}" == "osx" ]; then
+            cd $release_name
+            lipo -create -output pocket_updater_gui pocket_updater_gui_arm64 pocket_updater_gui_x64
+            rm pocket_updater_gui_arm64
+            rm pocket_updater_gui_x64
+            zip "../pocket_updater_gui_mac.zip" "pocket_updater_gui"; cd ..;
+          else
+            cd $release_name
+            zip "../pocket_updater_gui_linux.zip" "pocket_updater_gui_x64"
+            cd ..
+          fi
+
+          # Delete output directory
+          rm -r "$release_name"
+
+      - name: Publish
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "pocket_updater_gui*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}

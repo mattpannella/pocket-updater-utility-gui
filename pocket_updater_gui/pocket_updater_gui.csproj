@@ -9,10 +9,11 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.1.0</Version>
     <Description>Keep your Analogue Pocket up to date</Description>
     <Copyright>2023 Matt Pannella</Copyright>
     <Authors>Matt Pannella</Authors>
-    <Product>Analogue Pocket Updater Utility</Product>
+    <Product>Pocket Thing</Product>
     <PublishReadyToRun>true</PublishReadyToRun>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
@@ -45,5 +46,9 @@
       <DependentUpon>HomeView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".github\workflows\build.yaml" />
   </ItemGroup>
 </Project>
