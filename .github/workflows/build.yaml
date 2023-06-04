@@ -59,7 +59,7 @@ jobs:
             zip "../pocket_updater_gui_mac.zip" "pocket_updater_gui"; cd ..;
           else
             cd $release_name
-            zip "../pocket_updater_gui_linux.zip" "pocket_updater_gui_x64"
+            zip "../pocket_updater_gui_linux.zip" "pocket_updater_gui"
             cd ..
           fi
 
