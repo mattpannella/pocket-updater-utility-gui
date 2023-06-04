@@ -20,7 +20,7 @@ public partial class App : Application
     {
         string location = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
         string? path = Path.GetDirectoryName(location);
-        path = "/Users/mattpannella/pocket-test";
+        //path = "/Users/mattpannella/pocket-test";
         PocketCoreUpdater updater = new PocketCoreUpdater(path);
         SettingsManager settings = new SettingsManager(path);
 
