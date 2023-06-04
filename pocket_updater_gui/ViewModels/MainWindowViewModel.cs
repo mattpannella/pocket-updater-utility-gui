@@ -20,7 +20,8 @@ namespace pannella.analoguepocket.gui.ViewModels
         private readonly ObservableObject[] Pages = 
         { 
             new HomeViewModel(),
-            new SettingsViewModel()
+            new SettingsViewModel(),
+            new CoresViewModel()
         };
 
         // The default is the first page
@@ -51,6 +52,11 @@ namespace pannella.analoguepocket.gui.ViewModels
         public void GoToSettings()
         {
             CurrentPage = Pages[1];
+        }
+        
+        public void GoToCores()
+        {
+            CurrentPage = Pages[2];
         }
 
         private void RandomHeader()

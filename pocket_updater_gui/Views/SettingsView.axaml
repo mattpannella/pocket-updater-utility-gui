@@ -5,7 +5,7 @@
              xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
              x:Class="pannella.analoguepocket.gui.Views.SettingsView">
-    <Grid ColumnDefinitions="160,*">
+    <Grid ColumnDefinitions="175,*">
         <StackPanel IsEnabled="{Binding Loaded}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
             <StackPanel.Background>
                 <ImageBrush
@@ -31,7 +31,16 @@
         </StackPanel>
         <Border Grid.Column="1" Padding="15">
             <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
-               <StackPanel Grid.Column="0" Grid.Row="0">
+                <Grid.Background>
+                    <ImageBrush
+                        AlignmentX="Center"
+                        AlignmentY="Center"
+                        Source="/Assets/pocket.png"
+                        Stretch="None"
+                        Opacity=".05"
+                        TileMode="Tile" />
+                </Grid.Background>  
+                <StackPanel Grid.Column="0" Grid.Row="0">
                    <Label>Preserve Platforms Directory</Label>
                    <CheckBox IsChecked="{Binding PreservePlatforms, Mode=TwoWay}"></CheckBox>
                </StackPanel>

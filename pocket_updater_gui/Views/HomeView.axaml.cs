@@ -31,4 +31,10 @@ public partial class HomeView : UserControl
     {
         Environment.Exit(0);
     }
+
+    private void CoresClick(object? sender, RoutedEventArgs e)
+    {
+        MainWindowViewModel context = this.Parent.DataContext as MainWindowViewModel;
+        context.GoToCores();
+    }
 }

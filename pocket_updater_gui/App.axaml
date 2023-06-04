@@ -11,10 +11,11 @@
         <SolidColorBrush x:Key="MediumGrey">#333333</SolidColorBrush>
     </Application.Resources>
     <Application.Styles>
+        <StyleInclude Source="/CoreManagerRow.axaml"></StyleInclude>
         <FluentTheme Mode="Dark"/>
         <Style Selector="Button.leftNav">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="Padding" Value="5,15"/>
+            <Setter Property="Padding" Value="15,15"/>
             <Setter Property="FontSize" Value="15" />
         </Style>
         <Style Selector="i|Icon.menuicon">

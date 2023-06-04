@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+             xmlns:local="clr-namespace:pannella.analoguepocket.gui"
+             xmlns:models="clr-namespace:pannella.analoguepocket.gui.Models"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
+             x:Class="pannella.analoguepocket.gui.Views.CoresView">
+    <Grid ColumnDefinitions="175,*">
+        <StackPanel IsEnabled="{Binding !Loading}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
+            <StackPanel.Background>
+                <ImageBrush
+                    AlignmentX="Left"
+                    AlignmentY="Top"
+                    Source="/Assets/corn2.png"
+                    Stretch="None"
+                    Opacity=".1"
+                    TileMode="Tile" />
+            </StackPanel.Background>
+            <Button Classes="leftNav" Command="{Binding SaveClick}">
+                <StackPanel Orientation="Horizontal">
+                    <i:Icon Classes="menuicon" Value="fa-solid fa-floppy-disk" />
+                    <Label>Save</Label>
+                </StackPanel>
+            </Button>
+            <Button Classes="leftNav" Margin="0,15" Click="GoHome">
+                <StackPanel Orientation="Horizontal">
+                    <i:Icon Classes="menuicon" Value="fa-solid fa-arrow-left" />
+                    <Label>Go Back</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Label Grid.Column="1" IsVisible="{Binding Loading}">Loading...</Label>
+        <Border Grid.Column="1" Padding="15">
+            <ScrollViewer>
+                <ItemsControl x:Name="coresListBox" Items="{Binding Cores, Mode=TwoWay}">
+                    <ItemsControl.Background>
+                        <ImageBrush
+                            AlignmentX="Center"
+                            AlignmentY="Top"
+                            Source="/Assets/pocket.png"
+                            Stretch="None"
+                            Opacity=".05"
+                            TileMode="Tile" />
+                    </ItemsControl.Background>  
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <local:CoreManagerRow CoreName="{Binding Path=Identifier}" 
+                                                      Selected="{Binding Path=Track, Mode=TwoWay}"
+                                                      platform="{Binding Path=Platform, Mode=TwoWay}"
+                                                      category="{Binding Path=Category, Mode=TwoWay}"/>
+                                <Rectangle Fill="White" Height="1" Margin="0,20"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>
