@@ -19,10 +19,10 @@ jobs:
             os: windows-latest
             target: win
             arm: false
-          - kind: linux
-            os: ubuntu-latest
-            target: linux
-            arm: false
+         # - kind: linux
+          #  os: ubuntu-latest
+           # target: linux
+            #arm: false
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
