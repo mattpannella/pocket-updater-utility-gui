@@ -30,7 +30,7 @@
             </Button>
         </StackPanel>
         <Border Grid.Column="1" Padding="15">
-            <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="60,60,60,60,60,60">
                 <Grid.Background>
                     <ImageBrush
                         AlignmentX="Center"
@@ -40,52 +40,61 @@
                         Opacity=".05"
                         TileMode="Tile" />
                 </Grid.Background>  
-                <StackPanel Grid.Column="0" Grid.Row="0">
-                   <Label>Preserve Platforms Directory</Label>
-                   <CheckBox IsChecked="{Binding PreservePlatforms, Mode=TwoWay}"></CheckBox>
-               </StackPanel>
-               <StackPanel Grid.Column="1" Grid.Row="0">
-                   <Label>Download Assets</Label>
+                <Grid.Styles>
+                    <Style Selector="StackPanel.horizontal">
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style Selector="StackPanel">
+                        <Setter Property="Margin" Value="0,15" />
+                    </Style>
+                </Grid.Styles>
+                <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="0">
+                    <CheckBox IsChecked="{Binding PreservePlatforms, Mode=TwoWay}"></CheckBox>
+                    <Label>Preserve Platforms Directory</Label>
+                </StackPanel>
+               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="0">
                    <CheckBox IsChecked="{Binding DownloadAssets, Mode=TwoWay}"></CheckBox>
+                   <Label>Download Assets</Label>
                </StackPanel>
-               <StackPanel Grid.Column="2" Grid.Row="0">
-                   <Label>Fix Jotego Names</Label>
+               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="1">
                    <CheckBox IsChecked="{Binding FixJTNames, Mode=TwoWay}"></CheckBox>
+                   <Label>Fix Jotego Names</Label>
                </StackPanel>
-               <StackPanel Grid.Column="0" Grid.Row="1">
-                   <Label>Archive Name</Label>
-                   <TextBox Text="{Binding ArchiveName, Mode=TwoWay}"></TextBox>
+               <StackPanel Classes="horizontal"  Grid.Column="1" Grid.Row="1">
+                   <CheckBox IsChecked="{Binding BuildInstanceJSONs, Mode=TwoWay}"></CheckBox>
+                   <Label>Build JSONS</Label>
                </StackPanel>
-               <StackPanel Grid.Column="1" Grid.Row="1">
-                   <Label>CRC CHeck</Label>
+               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="2">
                    <CheckBox IsChecked="{Binding CrcCheck, Mode=TwoWay}"></CheckBox>
+                   <Label>CRC CHeck</Label>
                </StackPanel>
-               <StackPanel Grid.Column="2" Grid.Row="1">
-                   <Label>Download Firmware</Label>
+               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="2">
                    <CheckBox IsChecked="{Binding DownloadFirmware, Mode=TwoWay}"></CheckBox>
+                   <Label>Download Firmware</Label>
                </StackPanel>
-               <StackPanel Grid.Column="0" Grid.Row="2">
+               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="3">
+                   <CheckBox IsChecked="{Binding UseCustomArchive, Mode=TwoWay}"></CheckBox>
+                   <Label>Use Custom Archive</Label>
+               </StackPanel>
+               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="3">
+                   <CheckBox IsChecked="{Binding DeleteSkippedCores, Mode=TwoWay}"></CheckBox>
+                   <Label>Delete Skipped Cores</Label>
+               </StackPanel>
+               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="4">
+                   <CheckBox IsChecked="{Binding SkipAltAssets, Mode=TwoWay}"></CheckBox>
+                   <Label>Skip Alternative Assets</Label>
+               </StackPanel>
+               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="4">
+                   
+               </StackPanel>
+               <StackPanel Grid.Column="0" Grid.Row="5">
                    <Label>Github Token</Label>
                    <TextBox Text="{Binding GithubToken, Mode=TwoWay}"></TextBox>
                </StackPanel>
-               <StackPanel Grid.Column="1" Grid.Row="2">
-                   <Label>Delete Skipped Cores</Label>
-                   <CheckBox IsChecked="{Binding DeleteSkippedCores, Mode=TwoWay}"></CheckBox>
-               </StackPanel>
-               <StackPanel Grid.Column="2" Grid.Row="2">
-                   <Label>Skip Alternative Assets</Label>
-                   <CheckBox IsChecked="{Binding SkipAltAssets, Mode=TwoWay}"></CheckBox>
-               </StackPanel>
-               <StackPanel Grid.Column="0" Grid.Row="3">
-                   <Label>Build JSONS</Label>
-                   <CheckBox IsChecked="{Binding BuildInstanceJSONs, Mode=TwoWay}"></CheckBox>
-               </StackPanel>
-               <StackPanel Grid.Column="1" Grid.Row="3">
-                   <Label>Use Custom Archive</Label>
-                   <CheckBox IsChecked="{Binding UseCustomArchive, Mode=TwoWay}"></CheckBox>
-               </StackPanel>
-               <StackPanel Grid.Column="2" Grid.Row="3">
-
+               <StackPanel Grid.Column="1" Grid.Row="5">
+                   <Label>Archive Name</Label>
+                   <TextBox Text="{Binding ArchiveName, Mode=TwoWay}"></TextBox>
                </StackPanel>
            </Grid>
         </Border>

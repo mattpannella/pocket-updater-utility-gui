@@ -45,6 +45,7 @@ public partial class CoresViewModel : ObservableObject
         Globals.Instance.Updater.Initialize();
         var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
             .GetMessageBoxStandardWindow("You Did It!", "Core choices and platform names saved.");
+        messageBoxStandardWindow.Show();
     }
     
     private async Task LoadCores()
@@ -71,5 +72,21 @@ public partial class CoresViewModel : ObservableObject
         }
 
         Loading = false;
+    }
+
+    public void All()
+    {
+        for(int i = 0; i < Cores.Count; i++)
+        {
+            Cores[i].Track = true;
+        }
+    }
+    
+    public void None()
+    {
+        for(int i = 0; i < Cores.Count; i++)
+        {
+            Cores[i].Track = false;
+        }
     }
 }

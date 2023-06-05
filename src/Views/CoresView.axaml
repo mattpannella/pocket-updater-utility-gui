@@ -33,7 +33,22 @@
         </StackPanel>
         <Label Grid.Column="1" IsVisible="{Binding Loading}">Loading...</Label>
         <Border Grid.Column="1" Padding="15">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <Grid RowDefinitions="Auto,*">
+                <StackPanel Margin="0,15" Grid.Row="0" Orientation="Horizontal" IsEnabled="{Binding !Loading}">
+                <Button Command="{Binding All}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-square-check" />
+                        <Label>All</Label>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding None}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="menuicon" Value="fa-solid fa-square" />
+                        <Label>None</Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="coresListBox" Items="{Binding Cores, Mode=TwoWay}">
                     <ItemsControl.Background>
                         <ImageBrush
@@ -58,6 +73,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

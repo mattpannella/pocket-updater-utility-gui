@@ -91,6 +91,9 @@ public partial class HomeViewModel : ObservableObject
         Console = new ObservableCollection<string>();
         await Globals.Instance.Updater.RunUpdates();
         Loaded = true;
+        var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager
+            .GetMessageBoxStandardWindow("Fin", "All updates complete");
+        messageBoxStandardWindow.Show();
     }
 
     private void WriteLine(string text)
