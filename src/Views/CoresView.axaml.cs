@@ -23,5 +23,4 @@ public partial class CoresView : UserControl
         MainWindowViewModel context = this.Parent.DataContext as MainWindowViewModel;
         context.GoToHome();
     }
-    
 }

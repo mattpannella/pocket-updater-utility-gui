@@ -35,19 +35,26 @@
         <Border Grid.Column="1" Padding="15">
             <Grid RowDefinitions="Auto,*">
                 <StackPanel Margin="0,15" Grid.Row="0" Orientation="Horizontal" IsEnabled="{Binding !Loading}">
-                <Button Command="{Binding All}">
-                    <StackPanel Orientation="Horizontal">
-                        <i:Icon Classes="menuicon" Value="fa-solid fa-square-check" />
-                        <Label>All</Label>
-                    </StackPanel>
-                </Button>
-                <Button Command="{Binding None}">
-                    <StackPanel Orientation="Horizontal">
-                        <i:Icon Classes="menuicon" Value="fa-solid fa-square" />
-                        <Label>None</Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                    <Button Command="{Binding All}">
+                        <StackPanel Orientation="Horizontal">
+                            <i:Icon Classes="menuicon" Value="fa-solid fa-square-check" />
+                            <Label>All</Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding None}">
+                        <StackPanel Orientation="Horizontal">
+                            <i:Icon Classes="menuicon" Value="fa-solid fa-square" />
+                            <Label>None</Label>
+                        </StackPanel>
+                    </Button>
+                    <ComboBox Items="{Binding SortFields}" SelectedItem="{Binding CurrentSort, Mode=TwoWay}" VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding }" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
             <ScrollViewer Padding="5" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="coresListBox" Items="{Binding Cores, Mode=TwoWay}">
                     <ItemsControl.Background>
