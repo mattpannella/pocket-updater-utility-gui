@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Media.Imaging;
 
 namespace pannella.analoguepocket.gui;
 
@@ -49,5 +50,14 @@ public class CoreManagerRow : TemplatedControl
     {
         get => GetValue(versionProperty);
         set => SetValue(versionProperty, value);
+    }
+
+    public static readonly StyledProperty<Bitmap> ImageProperty = AvaloniaProperty.Register<CoreManagerRow, Bitmap>(
+        "Image");
+
+    public Bitmap Image
+    {
+        get => GetValue(ImageProperty);
+        set => SetValue(ImageProperty, value);
     }
 }

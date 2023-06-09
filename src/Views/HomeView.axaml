@@ -73,6 +73,7 @@
             </StackPanel>
             <Border Padding="15" Grid.Column="1">
                 <Grid RowDefinitions="*,15">
+                    <Image Grid.Row="0" Source="{Binding Image}"></Image>
                     <ListBox Grid.Row="0" x:Name="OutputBox" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}"
                              Items="{Binding Console, Mode=OneWay}" 
                              ScrollViewer.VerticalScrollBarVisibility="Visible"

@@ -48,7 +48,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer Padding="5" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="coresListBox" Items="{Binding Cores, Mode=TwoWay}">
                     <ItemsControl.Background>
                         <ImageBrush
@@ -66,7 +66,8 @@
                                                       Selected="{Binding Path=Track, Mode=TwoWay}"
                                                       platform="{Binding Path=Platform, Mode=TwoWay}"
                                                       category="{Binding Path=Category, Mode=TwoWay}"
-                                                      version = "{Binding Path=Config.core.metadata.version} "/>
+                                                      version = "{Binding Path=Config.core.metadata.version}" 
+                                                      Image = "{Binding Path=Image}"/>
                                 <Rectangle Fill="White" Height="1" Margin="0,20"/>
                             </StackPanel>
                         </DataTemplate>

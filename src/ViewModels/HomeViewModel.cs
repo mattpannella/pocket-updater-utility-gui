@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using pannella.analoguepocket.gui.Views;
@@ -21,13 +23,15 @@ public partial class HomeViewModel : ObservableObject
     [ObservableProperty]
     private int selectedItem = 0;
 
+    [ObservableProperty] public Bitmap image;
+
     //public HomeViewModel(HomeView window)
     public HomeViewModel()
     {
         //_window = window;
         LoadUpdater();
     }
-    
+
     private async Task LoadUpdater()
     {
         Globals.Instance.Updater.StatusUpdated += updater_StatusUpdated;

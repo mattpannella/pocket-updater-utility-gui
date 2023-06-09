@@ -10,13 +10,14 @@
         <!-- Set Defaults -->
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid ColumnDefinitions="Auto, 300, 200, *, Auto">
+                <Grid ColumnDefinitions="Auto, Auto, 300, 200, *, Auto">
                     <CheckBox Grid.Column="0" IsChecked="{TemplateBinding Selected, Mode=TwoWay}"/>
-                    <TextBox Grid.Column="1" Text="{TemplateBinding platform, Mode=TwoWay}" Margin="0,0,10,0"/>
-                    <TextBox Grid.Column="2" Text="{TemplateBinding category, Mode=TwoWay}" Margin="0,0,10,0"/>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="3" Text="{TemplateBinding CoreName}"/>
-                    <TextBlock x:Name="installedVersion" VerticalAlignment="Center" Grid.Column="4" Text="{TemplateBinding version}" />
-                    <avalonia:Icon Grid.Column="4" IsVisible="{TemplateBinding version, Converter={x:Static StringConverters.IsNullOrEmpty}}" Classes="menuicon" Value="fa-solid fa-circle-xmark" />
+                    <Image Stretch="Uniform" Grid.Column="1" Source="{TemplateBinding Image}" Height="41.25" Width="130.25"/>
+                    <TextBox VerticalAlignment="Center" Grid.Column="2" Text="{TemplateBinding platform, Mode=TwoWay}" Margin="10,0,10,0"/>
+                    <TextBox VerticalAlignment="Center" Grid.Column="3" Text="{TemplateBinding category, Mode=TwoWay}" Margin="0,0,10,0"/>
+                    <TextBlock VerticalAlignment="Center" Grid.Column="4" Text="{TemplateBinding CoreName}"/>
+                    <TextBlock x:Name="installedVersion" VerticalAlignment="Center" Grid.Column="5" Text="{TemplateBinding version}" />
+                    <avalonia:Icon Grid.Column="5" IsVisible="{TemplateBinding version, Converter={x:Static StringConverters.IsNullOrEmpty}}" Classes="menuicon" Value="fa-solid fa-circle-xmark" />
                 </Grid>
             </ControlTemplate>
         </Setter>

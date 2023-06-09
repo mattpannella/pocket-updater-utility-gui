@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DynamicData;
 using pannella.analoguepocket.gui.Models;
@@ -66,8 +67,10 @@ public partial class CoresViewModel : ObservableObject
                 Track = !Globals.Instance.SettingsManager.GetCoreSettings(c.identifier).skip,
                 Platform = p.name,
                 Category = p.category,
-                Config = c.getConfig()
+                Config = c.getConfig(),
+                PlatformId = c.platform_id
             };
+            core.SetImage();
             Cores.Add(core);
         }
 

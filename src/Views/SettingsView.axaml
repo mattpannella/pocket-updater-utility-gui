@@ -1,102 +1,144 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
+<UserControl
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:i="clr-namespace:Projektanker.Icons.Avalonia;assembly=Projektanker.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="pannella.analoguepocket.gui.Views.SettingsView">
-    <Grid ColumnDefinitions="175,*">
-        <StackPanel IsEnabled="{Binding Loaded}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
-            <StackPanel.Background>
-                <ImageBrush
+	<Grid ColumnDefinitions="175,*">
+		<StackPanel IsEnabled="{Binding Loaded}" Height="{Binding ElementName=LayoutRoot, Path=ActualHeight}" Grid.Column="0" VerticalAlignment="Stretch">
+			<StackPanel.Background>
+				<ImageBrush
                     AlignmentX="Left"
                     AlignmentY="Top"
                     Source="/src/Assets/corn2.png"
                     Stretch="None"
                     Opacity=".1"
                     TileMode="Tile" />
-            </StackPanel.Background>
-            <Button Classes="leftNav" Command="{Binding SaveClick}">
-                <StackPanel Orientation="Horizontal">
-                    <i:Icon Classes="menuicon" Value="fa-solid fa-floppy-disk" />
-                    <Label>Save</Label>
-                </StackPanel>
-            </Button>
-            <Button Classes="leftNav" Margin="0,15" Click="GoHome">
-                <StackPanel Orientation="Horizontal">
-                    <i:Icon Classes="menuicon" Value="fa-solid fa-arrow-left" />
-                    <Label>Go Back</Label>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-        <Border Grid.Column="1" Padding="15">
-            <Grid ColumnDefinitions="*,*" RowDefinitions="60,60,60,60,60,60">
-                <Grid.Background>
-                    <ImageBrush
+			</StackPanel.Background>
+			<Button Classes="leftNav" Command="{Binding SaveClick}">
+				<StackPanel Orientation="Horizontal">
+					<i:Icon Classes="menuicon" Value="fa-solid fa-floppy-disk" />
+					<Label>Save</Label>
+				</StackPanel>
+			</Button>
+			<Button Classes="leftNav" Margin="0,15" Click="GoHome">
+				<StackPanel Orientation="Horizontal">
+					<i:Icon Classes="menuicon" Value="fa-solid fa-arrow-left" />
+					<Label>Go Back</Label>
+				</StackPanel>
+			</Button>
+		</StackPanel>
+		<Border Grid.Column="1" Padding="15">
+			<ScrollViewer>
+			<Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*" ShowGridLines="False">
+				<Grid.Background>
+					<ImageBrush
                         AlignmentX="Center"
                         AlignmentY="Center"
                         Source="/src/Assets/pocket.png"
                         Stretch="None"
                         Opacity=".05"
                         TileMode="Tile" />
-                </Grid.Background>  
-                <Grid.Styles>
-                    <Style Selector="StackPanel.horizontal">
-                        <Setter Property="Orientation" Value="Horizontal"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                    </Style>
-                    <Style Selector="StackPanel">
-                        <Setter Property="Margin" Value="0,15" />
-                    </Style>
-                </Grid.Styles>
-                <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="0">
-                    <CheckBox IsChecked="{Binding PreservePlatforms, Mode=TwoWay}"></CheckBox>
-                    <Label>Preserve Platforms Directory</Label>
-                </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="0">
-                   <CheckBox IsChecked="{Binding DownloadAssets, Mode=TwoWay}"></CheckBox>
-                   <Label>Download Assets</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="1">
-                   <CheckBox IsChecked="{Binding FixJTNames, Mode=TwoWay}"></CheckBox>
-                   <Label>Fix Jotego Names</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal"  Grid.Column="1" Grid.Row="1">
-                   <CheckBox IsChecked="{Binding BuildInstanceJSONs, Mode=TwoWay}"></CheckBox>
-                   <Label>Build JSONS</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="2">
-                   <CheckBox IsChecked="{Binding CrcCheck, Mode=TwoWay}"></CheckBox>
-                   <Label>CRC CHeck</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="2">
-                   <CheckBox IsChecked="{Binding DownloadFirmware, Mode=TwoWay}"></CheckBox>
-                   <Label>Download Firmware</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="3">
-                   <CheckBox IsChecked="{Binding UseCustomArchive, Mode=TwoWay}"></CheckBox>
-                   <Label>Use Custom Archive</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="3">
-                   <CheckBox IsChecked="{Binding DeleteSkippedCores, Mode=TwoWay}"></CheckBox>
-                   <Label>Delete Skipped Cores</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="0" Grid.Row="4">
-                   <CheckBox IsChecked="{Binding SkipAltAssets, Mode=TwoWay}"></CheckBox>
-                   <Label>Skip Alternative Assets</Label>
-               </StackPanel>
-               <StackPanel Classes="horizontal" Grid.Column="1" Grid.Row="4">
-                   
-               </StackPanel>
-               <StackPanel Grid.Column="0" Grid.Row="5">
-                   <Label>Github Token</Label>
-                   <TextBox Text="{Binding GithubToken, Mode=TwoWay}"></TextBox>
-               </StackPanel>
-               <StackPanel Grid.Column="1" Grid.Row="5">
-                   <Label>Archive Name</Label>
-                   <TextBox Text="{Binding ArchiveName, Mode=TwoWay}"></TextBox>
-               </StackPanel>
-           </Grid>
-        </Border>
-    </Grid>
+				</Grid.Background>
+				<Grid.Styles>
+					<Style Selector="StackPanel.horizontal">
+						<Setter Property="Orientation" Value="Horizontal"/>
+					</Style>
+					<Style Selector="StackPanel.setting">
+						<Setter Property="Margin" Value="10,25" />
+					</Style>
+					<Style Selector="TextBlock">
+						<Setter Property="Padding" Value="10,0,10,10"/>
+						<Setter Property="FontSize" Value="13"/>
+					</Style>
+					<Style Selector="Label">
+						<Setter Property="FontStyle" Value="Normal"/>
+						<Setter Property="FontWeight" Value="Bold" />
+						<Setter Property="VerticalAlignment" Value="Center"/>
+					</Style>
+				</Grid.Styles>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="0">
+					<StackPanel Classes="horizontal" >
+						<CheckBox IsChecked="{Binding PreservePlatforms, Mode=TwoWay}"></CheckBox>
+						<Label>Preserve Platforms Directory</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Turn this on if you make any customizations to your platform names or images.</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="0">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding DownloadAssets, Mode=TwoWay}"></CheckBox>
+						<Label>Download Assets</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Turn this off if you'd like to supply your own BIOS and arcade rom files, and don't want Update All to handle this.</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="1">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding FixJTNames, Mode=TwoWay}"></CheckBox>
+						<Label>Fix Jotego Names</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Automatically rename Jotego's core names. (jtcontra -> Contra, etc) during Update All</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="1">
+					<StackPanel Classes="horizontal" >
+						<CheckBox IsChecked="{Binding BuildInstanceJSONs, Mode=TwoWay}"></CheckBox>
+						<Label>Build Instance JSON Files</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Build instance JSON files during Update All</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="2">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding CrcCheck, Mode=TwoWay}"></CheckBox>
+						<Label>CRC Check BIOS and ROM Assets</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Use CRC hashes of asset files as validation</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="2">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding DownloadFirmware, Mode=TwoWay}"></CheckBox>
+						<Label>Download Firmware</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Check for firmware updates during Update All</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="3">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding UseCustomArchive, Mode=TwoWay}"></CheckBox>
+						<Label>Use Custom Archive</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Instead of checking the archive site defined in your settings to look for required assets, use a custom site that you can define. (by default this will be a site hosted by RetroDriven)</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="3">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding DeleteSkippedCores, Mode=TwoWay}"></CheckBox>
+						<Label>Delete Untracked Cores</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">Delete cores that you have no selected to track. If you turn this off, they will remain installed but no updates will be pulled.</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="4">
+					<StackPanel Classes="horizontal">
+						<CheckBox IsChecked="{Binding SkipAltAssets, Mode=TwoWay}"></CheckBox>
+						<Label>Skip Alternative Assets</Label>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">If a core developer puts any of their rom asset files in a directory named _alternatives, they won't be downloaded automatically during the update process</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="4"></StackPanel>
+				<StackPanel Classes="setting" Grid.Column="0" Grid.Row="5">
+					<StackPanel>
+						<Label>Github Token</Label>
+						<TextBox Text="{Binding GithubToken, Mode=TwoWay}"></TextBox>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">If you're running up against the rate limit on the GitHub API, you can provide your personal access token.</TextBlock>
+				</StackPanel>
+				<StackPanel Classes="setting" Grid.Column="1" Grid.Row="5">
+					<StackPanel>
+						<Label>Archive Name</Label>
+						<TextBox Text="{Binding ArchiveName, Mode=TwoWay}"></TextBox>
+					</StackPanel>
+					<TextBlock TextWrapping="Wrap">The archive for sourcing core assets</TextBlock>
+				</StackPanel>
+			</Grid>
+			</ScrollViewer>
+		</Border>
+	</Grid>
 </UserControl>
