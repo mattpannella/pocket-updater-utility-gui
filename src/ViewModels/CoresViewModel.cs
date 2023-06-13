@@ -8,37 +8,9 @@ public partial class CoresViewModel : ObservableObject
 {
     [ObservableProperty]
     private ObservableCollection<SimpleCore> cores = new ObservableCollection<SimpleCore>();
-    /*
-    public ObservableCollection <SimpleCore> Cores {
-        get
-        {
-            switch (CurrentSort)
-            {
-                case "Platform":
-                    return new ObservableCollection<SimpleCore>(cores.OrderBy(x => x.platform).ToList());
-                    break;
-                case "Category":
-                    cores.OrderBy(x => x.category);
-                    break;
-                case "Identifier":
-                    cores.OrderBy(x => x.identifier);
-                    break;
-            }
-
-            return cores;
-        }
-        set {
-            Cores = value;
-        }
-    }*/
 
     [ObservableProperty] private bool loading = true;
-
-    [ObservableProperty] private ObservableCollection<string> sortFields = new ObservableCollection<string>()
-        { "Platform", "Category", "Identifier" };
-
-    [ObservableProperty] private string currentSort = "Platform";
-
+    
     public CoresViewModel()
     {
         LoadCores();
@@ -115,10 +87,5 @@ public partial class CoresViewModel : ObservableObject
         {
             Cores[i].Track = false;
         }
-    }
-
-    private void SortList(string by)
-    {
-        string m = "a";
     }
 }

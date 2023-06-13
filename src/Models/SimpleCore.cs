@@ -28,7 +28,7 @@ public partial class SimpleCore : ObservableObject
 
     public async Task SetImage()
     {
-        string path = "/Users/mattpannella/pocket-test/Platforms/_images/" + platformId + ".bin";
+        string path = Path.Combine(GlobalHelper.Instance.UpdateDirectory, "Platforms", "_images/", platformId + ".bin");
         if (File.Exists(path))
         {
             byte[] bytes = File.ReadAllBytes(path);
